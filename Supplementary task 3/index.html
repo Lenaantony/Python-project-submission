@@ -1,0 +1,245 @@
+<html>
+    <head>
+        <title>PORTFOLIO OF LENA ANTONY</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+         <nav><a href='#home'> Home</a>
+            <a href='#skills'> Skills</a>
+            <a href ='#projects'> Projects</a>
+            <a href ='#designs'> Designs</a>
+             <a href ='#blog'> Blogs</a>
+            <a href='#contact'> Contact</a></nav>
+        <section id="home">
+             <h1>LENA ANTONY</h1>
+            <h3>Computer Science Student</h3>
+            <p>
+                Aspiring Web Developer and UI/UX Designer.
+            </p>
+            <a href="#projects" class="button">
+            <button>View projects</button></a>
+            <section id="about">
+                <h2>About me</h2>
+                <p>I am a 3rd year B Tech Computer Science student at Muthoot Institute of Technology and Science,Kochi.</p>
+            </section>
+        </section>
+        <section id="skills">
+            <h2>Skills</h2>
+            <div id="skillsflexbox">
+                <div class="card">C programming</div>
+                <div class="card">HTML</div>
+                <div class="card">CSS</div>
+                <div class="card">SQL</div>
+            </div>
+        </section>
+        <section id="projects">
+            <h2> Projects(<span id="projectcount"></span>)</h2>
+            <div id="filterbuttons">
+                <button id="allbtn">All</button>
+                <button id="webbtn">Web</button>
+                <button id="designbtn">Design</button>
+                <button id="codebtn">Code</button>
+            </div>
+            <div id="projectflexbox"></div>
+        </section>
+         <section id="designs">
+            <h2>My designs using figma</h2>
+            <h3>"TIDE" Task manager app</h3>
+            <iframe
+                style="border: 1px solid rgba(0, 0, 0, 0.1);" 
+                width="80%" 
+                height="80%" 
+                src="https://embed.figma.com/design/sbsYpVLIRe3uSAnn5nY8k4/Tide-design?node-id=0-1&embed-host=share" 
+                allowfullscreen>
+            </iframe>
+            <h3>"AIVESTOR" Trading app</h3>
+                <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" 
+                width="80%" 
+                height="80%" 
+                src="https://embed.figma.com/design/rqS59IPyfG0JgFvJc9wUan/Untitled?node-id=0-1&embed-host=share" 
+                allowfullscreen>
+            </iframe>
+        </section>
+        <section id="blog">
+            <h2>Blog</h2>
+            <div id="blogcontainer">
+                <div class="blogcard card">
+                    <h3>Learning HTML</h3>
+                    <small>06 June 2026</small>
+                    <p>My experience learning HTML and building my first webpage.</p>
+                    <a href="blog1.html">Read more</a>
+                </div>
+
+                <div class="blogcard card">
+                    <h3>Learning CSS</h3>
+                    <small>07 June 2026</small>
+                    <p>Exploring styling, layouts and Flexbox.</p>
+                    <a href="blog2.html">Read more</a>
+                </div>
+
+                <div class="blogcard card">
+                    <h3>Figma Design</h3>
+                    <small>04 June 2026</small>
+                    <p>Creating UI prototypes and improving design skills.</p>
+                    <a href="blog3.html">Read more</a>
+                </div>
+
+                <div class="blogcard card">
+                    <h3>Portfolio Journey</h3>
+                    <small>10 June 2026</small>
+                    <p>Documenting the process of building my portfolio.</p>
+                    <a href="blog4.html">Read more</a>
+                </div>
+            </div>
+        </section>
+       
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>
+Mail:
+    <a href="mailto:lena@gmail.com">
+        lenaantony7617@gmail.com
+    </a>
+</p>
+
+<p>
+    Phone:
+    <a href="tel:1234567890">
+        1234567890
+    </a>
+</p>
+       </section>
+
+       <script>
+        /*const projects = document.querySelectorAll("#projectflexbox .card");
+const countDisplay = document.getElementById("projectcount");
+
+const buttons = {
+    all: document.getElementById("allbtn"),
+    web: document.getElementById("webbtn"),
+    design: document.getElementById("designbtn"),
+    code: document.getElementById("codebtn")
+};
+
+// update count
+function updateCount() {
+    let visible = 0;
+    projects.forEach(p => {
+        if (!p.classList.contains("hidden")) visible++;
+    });
+    countDisplay.textContent = visible;
+}
+
+// show all
+buttons.all.addEventListener("click", () => {
+    projects.forEach(p => p.classList.remove("hidden"));
+    updateCount();
+});
+
+
+function filter(type) {
+    console.log("Filtering:", type);
+
+    projects.forEach(p => {
+        if (p.classList.contains(type)) {
+            p.classList.remove("hidden");
+        } else {
+            p.classList.add("hidden");
+        }
+    });
+
+    updateCount();
+}
+
+buttons.web.addEventListener("click", () => filter("web"));
+buttons.design.addEventListener("click", () => filter("design"));
+buttons.code.addEventListener("click", () => filter("code"));
+
+// initial count
+updateCount();*/
+
+        
+        const countDisplay = document.getElementById("projectcount");
+        function updateCount() {
+            const projects=document.querySelectorAll("#projectflexbox .card");
+    let visible = 0;
+
+    projects.forEach(project=>
+       {
+        if(project.style.display !== "none"){
+            visible++;
+        }
+    });
+
+    countDisplay.textContent = visible;
+}
+        const allbutton=document.getElementById("allbtn");
+         allbutton.addEventListener("click",function(){
+            projects.forEach(function(project){
+                project.style.display="block";
+            });
+            updateCount();
+        });
+       // console.log(allbutton);
+        const webbutton=document.getElementById("webbtn");
+        webbutton.addEventListener("click",function(){
+            projects.forEach(function(project){
+                project.style.display="none";
+            });
+            projects.forEach(function(project){
+                if(project.classList.contains("web")){
+                    project.style.display="block";
+                }
+            });
+            updateCount();
+        });
+        //console.log(webbutton);
+        const designbutton=document.getElementById("designbtn");
+         designbutton.addEventListener("click",function(){
+            projects.forEach(function(project){
+                project.style.display="none";
+            });
+            projects.forEach(function(project){
+                if(project.classList.contains("design")){
+                    project.style.display="block";
+                }
+            });
+            updateCount();
+        });
+        //console.log(designbutton);
+        const codebutton=document.getElementById("codebtn");
+         codebutton.addEventListener("click",function(){
+            projects.forEach(function(project){
+                project.style.display="none";
+            });
+            projects.forEach(function(project){
+                if(project.classList.contains("code")){
+                    project.style.display="block";
+                }
+            });
+            updateCount();
+        });
+        //console.log(codebutton);
+        updateCount();
+        fetch("projects.json")
+            .then(response=>response.json())
+            .then(projects=>{
+                const projectContainer=document.getElementById("projectflexbox");
+                projects.forEach(project=>{
+                    const card=document.createElement("div");
+                    card.classList.add("card","code");
+                    card.innerHTML=`
+                        <h3>${project.name}</h3>
+                        <p>${project.description||"No description available"}</p>
+                        <a href="${project.url}"target="blank">
+                            View Repository
+                        </a>
+                    `;
+                    projectContainer.appendChild(card);
+                    
+                });
+                updateCount();
+            });
+       </script>
+    </body>
+</html>

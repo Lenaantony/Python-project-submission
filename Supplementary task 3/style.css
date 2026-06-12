@@ -1,0 +1,177 @@
+html{
+    scroll-behavior: smooth;
+}
+body{
+    font-family:arial,sans-serif;
+    margin:0;
+    align-items: center;
+    background-color: #E7E1B1;
+    color: #4d0e13;
+}
+nav{
+    background-color:#0D530E;
+    padding:15px;
+    position: sticky;
+    top:0;
+    z-index: 1000;
+}
+nav a{
+    margin-right:40px;
+    text-decoration: none;
+    color:#E7E1B1;
+    transition:0.3s;
+}
+nav a:hover{
+    color:white;
+}
+section{
+    padding:20px;
+}
+h1{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #4d0e13;
+}
+#home{
+    color:#4d0e13;
+    text-align:center;
+    padding:80px 20px;
+    background-color: #E7E1B1;
+}
+#home h1{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size:60px;
+}
+#home h3{
+    font-size:28px;
+}
+button{
+    padding: 12px 24px;
+    border:none;
+    border-radius:20px;
+
+    background: #0D530E;
+    color:E7E1B1;
+    font-size:16px;
+    margin-bottom: 25px;
+}
+button:hover{
+    background-color:#004101 ;
+}
+#about{
+
+}
+.card{
+    border:2px solid #0D530E;
+    padding:15px;
+    border-radius:12px;
+    box-shadow:0px 4px 12px gray;
+    background: #E7E1B1;
+    transition:all 0.4s ease;
+}
+.hidden{
+    display:none;
+}
+
+#skills{
+     color:#4d0e13;
+     background-color: #FBF5DD;;
+}
+#skillsflexbox {
+    display:flex;
+    gap:20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+#skillsflexbox .card{
+     width:220px;
+     justify-content: center;
+}
+#skillsflexbox .card:hover{
+     transform: scale(1.05);
+     box-shadow: 0px 8px 20px gray;
+}
+#projects{
+    color:#4d0e13;
+    background-color: #FBF5DD;;
+}
+#projectflexbox{
+    display:flex;
+    gap:20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    
+}
+#projectflexbox .card{
+    width: 250px;
+    height: 200px;
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+#projectflexbox .card:hover{
+     transform: scale(1.05);
+     box-shadow: 0px 8px 20px gray;
+}
+#designs{
+    text-align: center;
+    padding: 20px;
+}
+#designs iframe{
+    border-radius:20px;
+    box-shadow:0px 4px 12px gray;
+}
+#blog{
+    background-color: #FBF5DD;
+}
+#blogcontainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+    gap: 20px;
+    margin-top: 20px;
+
+    height: auto;
+}
+.blogcard:hover{
+    transform: scale(1.05);
+    box-shadow: 0px 8px 20px gray;
+}
+.blogcard small {
+    color: rgb(128, 128, 128);
+    display: block;
+    margin-bottom: 8px;
+}
+
+.blogcard a {
+
+    display:inline-block;
+    margin-top:10px;
+    padding:8px 16px;
+    background:#0D530E;
+    color:#E7E1B1;
+    text-decoration:none;
+    border-radius:10px;
+    transition:0.3s;
+}
+.blogcard a:hover{
+    background:#004101;
+}
+.blogpost{
+    max-width:800px;
+    margin:auto;
+    padding:40px;
+}
+#contact{
+    color:#4d0e13;
+    background-color: #e7e1b1;
+}
+
+
+/*#projectflexbox div{
+     border:5px solid rgb(77, 2, 70);
+    padding:15px;
+    border-radius: 20px;
+    box-shadow:2px 2px 10px gray ;
+}*/
