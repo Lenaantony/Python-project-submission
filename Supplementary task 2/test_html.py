@@ -3,6 +3,8 @@ from bs4 import BeautifulSoup
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+import os
+from dotenv import load_dotenv
 
 def get_bbc_news():
     response = requests.get("https://www.bbc.com/news")
@@ -59,13 +61,46 @@ def get_guardian_news():
         })
 
     return news_items
+def get_aljazeera_news():
+    response = requests.get("https://www.aljazeera.com/")
+    soup = BeautifulSoup(response.text, "html.parser")
 
+    links = soup.find_all(
+        "a",
+        class_="u-clickable-card__link article-card__link"
+    )
 
+    news_items = []
+
+    for item in links[:5]:
+        h2 = item.find("h2")
+
+        if not h2:
+            continue
+
+        title = h2.get_text(strip=True)
+        href = item.get("href")
+
+        if not href:
+            continue
+
+        link = "https://www.aljazeera.com" + href
+
+        news_items.append({
+            "title": title,
+            "link": link,
+            "time": "N/A",
+            "source": "Al Jazeera"
+        })
+
+    return news_items
 
 bbc_news = get_bbc_news()
 guardian_news = get_guardian_news()
+aljazeera_news = get_aljazeera_news()
 
-all_news = bbc_news + guardian_news
+all_news = bbc_news + guardian_news + aljazeera_news
+print(aljazeera_news)
 
 html = """
 <html>
@@ -85,12 +120,12 @@ for article in all_news:
 html += "</body></html>"
 
 
-# ---------------- SEND EMAIL ---------------- #
+load_dotenv("api.env")
+print(os.path.exists("api.env"))
 
-sender_email = "lenaantony7102006@gmail.com"
-receiver_email = "lenaantony7617@gmail.com"
-
-password = "tnid gexr kuiw zxfv"
+sender_email = os.getenv("SENDER_EMAIL_ADDRESS")
+receiver_email=os.getenv("RECIEVER_EMAIL_ADDRESS")
+password = os.getenv("EMAIL_PASSWORD")
 
 msg = MIMEMultipart()
 msg["From"] = sender_email
@@ -101,6 +136,10 @@ msg.attach(MIMEText(html, "html"))
 
 server = smtplib.SMTP("smtp.gmail.com", 587)
 server.starttls()
+print("Email:", sender_email)
+print("Password:", password)
+print(repr(sender_email))
+print(repr(password))
 server.login(sender_email, password)
 server.send_message(msg)
 server.quit()
