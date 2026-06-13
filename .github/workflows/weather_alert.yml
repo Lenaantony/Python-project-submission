@@ -1,0 +1,29 @@
+name: Weather Alert
+
+on:
+  schedule:
+    - cron: '0 1 * * *'  # runs daily (adjust later if needed)
+  workflow_dispatch:
+
+jobs:
+  weather-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests python-dotenv
+
+      - name: Run script
+        env:
+          WEATHER_API_KEY: ${{ secrets.WEATHER_API_KEY }}
+          EMAIL_ADDRESS: ${{ secrets.EMAIL_ADDRESS }}
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+        run: python "Supplementary task 1/weather_alert.py"
