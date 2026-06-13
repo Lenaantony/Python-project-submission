@@ -26,4 +26,8 @@ jobs:
           WEATHER_API_KEY: ${{ secrets.WEATHER_API_KEY }}
           EMAIL_ADDRESS: ${{ secrets.EMAIL_ADDRESS }}
           EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+<<<<<<< HEAD
         run: python "Supplementary task 1/weather_alert.py"
+=======
+        run: python "Supplementary task 1/weather_alert.py"
+>>>>>>> 06c177efc3d17c80d7f394141edd06e1a1ea7438
